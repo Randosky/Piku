@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ],
+    "outDir": "./dist/",
+    "allowUmdGlobalAccess": true, // заставить TypeScript работать с ProvidePlugin
+    "noImplicitAny": true,
+    "module": "esnext",
+    "target": "es6",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": false,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@layout/*": ["./src/layout/*"],
+      "@ui/*": ["./src/ui/*"],
+      "@redux/*": ["./src/store/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@api/*": ["./src/api/*"],
+      "@styles/*": ["./src/assets/styles/*"],
+      "@/*": ["./src/*"]
+    },
+    "lib": ["dom", "es5", "es2015.promise"],
+    "typeRoots": ["./node_modules/@types"]
+  }
+}
