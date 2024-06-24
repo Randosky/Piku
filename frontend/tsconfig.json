@@ -25,7 +25,7 @@
       "@components/*": ["./src/components/*"],
       "@layout/*": ["./src/layout/*"],
       "@ui/*": ["./src/ui/*"],
-      "@redux/*": ["./src/store/*"],
+      "@store/*": ["./src/store/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@utils/*": ["./src/utils/*"],
       "@api/*": ["./src/api/*"],

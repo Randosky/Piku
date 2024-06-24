@@ -82,7 +82,7 @@ module.exports = {
       "@layout": path.resolve(__dirname, "src/layout/"),
       "@ui": path.resolve(__dirname, "src/ui/"),
       "@assets": path.resolve(__dirname, "src/assets/"),
-      "@redux": path.resolve(__dirname, "src/store/"),
+      "@store": path.resolve(__dirname, "src/store/"),
       "@hooks": path.resolve(__dirname, "src/hooks/"),
       "@utils": path.resolve(__dirname, "src/utils/"),
       "@api": path.resolve(__dirname, "src/api/"),
