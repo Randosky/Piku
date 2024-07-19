@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const path = require("path");
+const ESLintPlugin = require("eslint-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -56,6 +57,15 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: production ? "[name].[contenthash].css" : "[name].css",
     }),
+    new ESLintPlugin({
+      failOnError: false,
+      failOnWarning: false,
+      configType: "flat",
+      eslintPath: "eslint/use-at-your-own-risk",
+      extensions: [".js", ".jsx", ".ts", ".tsx"],
+      exclude: ["node_modules"],
+    }),
+
   ],
   devServer: {
     watchFiles: path.join(__dirname, "src"),
