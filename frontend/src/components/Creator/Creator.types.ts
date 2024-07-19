@@ -1,2 +1,2 @@
-export type TCreatorContainerProps = {};
-export type TCreatorViewProps = TCreatorContainerProps & {};
+export type TCreatorContainerProps = unknown;
+export type TCreatorViewProps = TCreatorContainerProps;
