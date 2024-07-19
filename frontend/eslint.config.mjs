@@ -32,7 +32,7 @@ export default [
         },
       },
       globals: {
-        /** Plugins Recommended globals */
+        // Рекомендуемые глобальные переменные плагинов
         ...promise.configs.recommended.globals,
         ...jsxA11y.configs.recommended.globals,
         ...sonarjs.configs.recommended.globals,
@@ -40,6 +40,7 @@ export default [
         ...tsPluginEslint.configs.recommended.globals,
         ...globals.browser,
 
+        // Дополнительные глобальные переменные
         JSX: "readonly",
         React: "readonly",
         process: "readonly",
