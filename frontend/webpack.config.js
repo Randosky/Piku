@@ -65,7 +65,6 @@ module.exports = {
       extensions: [".js", ".jsx", ".ts", ".tsx"],
       exclude: ["node_modules"],
     }),
-
   ],
   devServer: {
     watchFiles: path.join(__dirname, "src"),
