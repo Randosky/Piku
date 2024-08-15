@@ -1,10 +1,10 @@
 {
-  "name": "frontend",
+  "name": "Piku",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js",
-    "build": "cross-env NODE_ENV=production yarn prettier && webpack --config webpack.config.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development & cross-env NODE_ENV=development webpack --watch",
+    "build": "cross-env NODE_ENV=production yarn prettier & cross-env NODE_ENV=production webpack --mode production",
     "lint": "eslint src",
     "prettier": "prettier . --write --cache src"
   },

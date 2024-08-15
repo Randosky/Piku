@@ -1,18 +1,24 @@
-const webpack = require("webpack");
-const path = require("path");
-const ESLintPlugin = require("eslint-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import ESLintPlugin from "eslint-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import path from "path";
+import { fileURLToPath } from "url";
+import webpack from "webpack";
 
 const production = process.env.NODE_ENV === "production";
 
-module.exports = {
-  entry: { pikuApp: path.resolve(__dirname, "./src/App.tsx") },
+const FILENAME = fileURLToPath(import.meta.url);
+const DIRNAME = path.dirname(FILENAME);
+
+export default {
+  entry: { pikuApp: path.resolve(DIRNAME, "./src/App.tsx") },
   output: {
-    path: path.resolve(__dirname, "./dist"),
+    path: path.resolve(DIRNAME, "./dist"),
+    publicPath: "/frontend/dist/chunks/",
     filename: production ? "[name].[contenthash].js" : "[name].js",
   },
+  devtool: "eval-cheap-module-source-map",
   module: {
     rules: [
       {
@@ -49,7 +55,6 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: "Piku",
       template: "./src/index.html",
@@ -67,8 +72,11 @@ module.exports = {
     }),
   ],
   devServer: {
-    watchFiles: path.join(__dirname, "src"),
+    watchFiles: path.join(DIRNAME, "src"),
     compress: true,
+    hot: true,
+    open: true,
+    host: "localhost",
     port: 5433,
     client: {
       // Показывает ошибки при компиляции в самом браузере
@@ -87,16 +95,16 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".css", ".scss"],
     alias: {
-      "@components": path.resolve(__dirname, "src/components/"),
-      "@layout": path.resolve(__dirname, "src/layout/"),
-      "@ui": path.resolve(__dirname, "src/ui/"),
-      "@assets": path.resolve(__dirname, "src/assets/"),
-      "@store": path.resolve(__dirname, "src/store/"),
-      "@hooks": path.resolve(__dirname, "src/hooks/"),
-      "@utils": path.resolve(__dirname, "src/utils/"),
-      "@api": path.resolve(__dirname, "src/api/"),
-      "@styles": path.resolve(__dirname, "src/assets/styles/"),
-      "@": path.resolve(__dirname, "src/"),
+      "@components": path.resolve(DIRNAME, "src/components/"),
+      "@layout": path.resolve(DIRNAME, "src/layout/"),
+      "@ui": path.resolve(DIRNAME, "src/ui/"),
+      "@assets": path.resolve(DIRNAME, "src/assets/"),
+      "@store": path.resolve(DIRNAME, "src/store/"),
+      "@hooks": path.resolve(DIRNAME, "src/hooks/"),
+      "@utils": path.resolve(DIRNAME, "src/utils/"),
+      "@api": path.resolve(DIRNAME, "src/api/"),
+      "@styles": path.resolve(DIRNAME, "src/assets/styles/"),
+      "@": path.resolve(DIRNAME, "src/"),
     },
   },
   mode: process.env.NODE_ENV,

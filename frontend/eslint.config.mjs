@@ -162,7 +162,7 @@ export default [
       "func-style": [2, "declaration", { allowArrowFunctions: true }],
       "key-spacing": [2, { beforeColon: false, afterColon: true }],
       "lines-around-comment": [2, { beforeBlockComment: false, beforeLineComment: false, allowBlockStart: false }],
-      "linebreak-style": [2, "windows"],
+      "linebreak-style": [0, "windows"],
       "max-nested-callbacks": [2, MAX_NESTED_CALLBACKS],
       "new-cap": 2,
       "new-parens": 2,
