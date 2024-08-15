@@ -15,10 +15,39 @@ export default {
   entry: { pikuApp: path.resolve(DIRNAME, "./src/App.tsx") },
   output: {
     path: path.resolve(DIRNAME, "./dist"),
-    publicPath: "/frontend/dist/chunks/",
-    filename: production ? "[name].[contenthash].js" : "[name].js",
+    publicPath: "/",
+    filename: "[name].js",
   },
   devtool: "eval-cheap-module-source-map",
+  mode: process.env.NODE_ENV,
+  optimization: {
+    usedExports: false,
+  },
+  devServer: {
+    hot: true,
+    port: 5433,
+    compress: true,
+    host: "localhost",
+    liveReload: false,
+    historyApiFallback: true,
+    static: {
+      directory: path.join(DIRNAME, "./dist"),
+    },
+    watchFiles: path.join(DIRNAME, "./src"),
+    client: {
+      // Показывает ошибки при компиляции в самом браузере
+      overlay: {
+        // Ошибки
+        errors: true,
+
+        // Предупреждения
+        warnings: false,
+      },
+
+      // Показывает прогесс компиляции
+      progress: true,
+    },
+  },
   module: {
     rules: [
       {
@@ -71,27 +100,6 @@ export default {
       exclude: ["node_modules"],
     }),
   ],
-  devServer: {
-    watchFiles: path.join(DIRNAME, "src"),
-    compress: true,
-    hot: true,
-    open: true,
-    host: "localhost",
-    port: 5433,
-    client: {
-      // Показывает ошибки при компиляции в самом браузере
-      overlay: {
-        // Ошибки
-        errors: true,
-
-        // Предупреждения
-        warnings: false,
-      },
-
-      // Показывает прогесс компиляции
-      progress: true,
-    },
-  },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".css", ".scss"],
     alias: {
@@ -107,5 +115,4 @@ export default {
       "@": path.resolve(DIRNAME, "src/"),
     },
   },
-  mode: process.env.NODE_ENV,
 };
